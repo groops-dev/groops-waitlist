@@ -2,8 +2,14 @@ import posthog from 'posthog-js';
 import { SocialShare } from '../types';
 
 export const initAnalytics = () => {
-  posthog.init('YOUR_POSTHOG_KEY', {
-    api_host: 'https://app.posthog.com',
+  const posthogApiKey = import.meta.env.VITE_POSTHOG_API_KEY; 
+  const posthogHost = import.meta.env.VITE_POSTHOG_HOST;
+  if (!posthogApiKey || !posthogHost) {
+    console.warn('PostHog API key or host not found');
+    return;
+  }
+  posthog.init(posthogApiKey, {
+    api_host: `https://${posthogHost}.posthog.cloud`,
   });
 };
 
