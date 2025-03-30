@@ -1,12 +1,15 @@
 import groopsLogo from "./assets/images/groops-logo.png";
+import groopsLogoText from "./assets/images/groops.png";
 
 import React, { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { WaitListFormData } from "./types";
 import { setWaitListStatus, getWaitListStatus } from "./utils/localStorage";
-import { trackSignup } from "./utils/analytics";
+import { initAnalytics, trackSignup } from "./utils/analytics";
 import { SocialShare } from "./components/SocialShare";
 import { CookieBanner } from "./components/CookieBanner";
+
+initAnalytics();
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(!!getWaitListStatus());
@@ -55,8 +58,11 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-mint-50 to-mint-100">
       <div className="max-w-xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-block p-3 bg-mint-200 rounded-full mb-6">
-            <img src={groopsLogo} alt="Groops Logo" className="w-16 h-16" />
+          <div className="flex justify-center mb-6">
+            <div className="inline-block p-3 bg-mint-200 rounded-full mb-6">
+              <img src={groopsLogo} alt="Groops Logo" className="w-16 h-16" />
+            </div>
+            <img src={groopsLogoText} alt="Groops Logo" className="w-48 h-18" />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Find your tribe
