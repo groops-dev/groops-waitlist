@@ -8,6 +8,7 @@ import { setWaitListStatus, getWaitListStatus } from "./utils/localStorage";
 import { initAnalytics, trackSignup } from "./utils/analytics";
 import { SocialShare } from "./components/SocialShare";
 import { CookieBanner } from "./components/CookieBanner";
+import { LandingCarousel } from "./components/LandingCarousel";
 
 initAnalytics();
 
@@ -26,7 +27,7 @@ function App() {
     setIsSubmitting(true);
     const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbwH6CyZyXYijIr809LtFl2BmyST6d8hq-zAOjygbMw6z8Os35rKr9EiNzLq6WF0Eo1Y/exec";
-  
+
     try {
       // Send the form data to the Google Apps Script endpoint
       const response = await fetch(SCRIPT_URL, {
@@ -35,13 +36,13 @@ function App() {
         body: JSON.stringify(formData),
         redirect: "follow",
       });
-  
+
       const result = await response.json();
-  
+
       if (result.status !== "success") {
         throw new Error(result.message);
       }
-  
+
       setWaitListStatus(formData.email);
       setIsSubmitted(true);
       trackSignup(formData.email, !!(formData.name || formData.location));
@@ -59,17 +60,18 @@ function App() {
       <div className="max-w-xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
-            <div className="inline-block p-3 bg-mint-200 rounded-full mb-6">
-              <img src={groopsLogo} alt="Groops Logo" className="w-16 h-16" />
+            <div className="flex items-center">
+              <img
+                src={groopsLogoText}
+                alt="Groops Logo"
+                className="w-48 h-24"
+              />
+              <div className="inline-block p-3 bg-mint-200 rounded-full mb-6">
+                <img src={groopsLogo} alt="Groops Logo" className="w-16 h-16" />
+              </div>
             </div>
-            <img src={groopsLogoText} alt="Groops Logo" className="w-48 h-18" />
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Find your tribe
-          </h1>
-          <p className="text-xl text-gray-600">
-            Join the waitlist to be first in line when Groops launches.
-          </p>
+          <LandingCarousel />
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm p-8">
@@ -86,6 +88,11 @@ function App() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
+                <div className="flex justify-center mb-6">
+                  <p className="text-xl text-gray-600 text-center">
+                    Join the waitlist to be one of the first in line when Groops launches.
+                  </p>
+                </div>
                 <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
@@ -161,7 +168,9 @@ function App() {
               <button
                 type="submit"
                 className="w-full flex justify-center py-4 px-6 border-0 rounded-2xl text-base font-medium text-white bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-rose-500"
-                disabled={isSubmitting || !formData.email || !formData.acceptedTerms}
+                disabled={
+                  isSubmitting || !formData.email || !formData.acceptedTerms
+                }
               >
                 {isSubmitting ? "Joining..." : "Join the waitlist"}
               </button>
