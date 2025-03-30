@@ -12,10 +12,11 @@
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
+    "posthog-js": "^1.116.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "posthog-js": "^1.116.6",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "react-social-icons": "^6.22.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

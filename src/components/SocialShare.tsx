@@ -1,56 +1,58 @@
-import React from 'react';
-import { Facebook, Linkedin, Twitter } from 'lucide-react';
-import { SocialShare as SocialShareType } from '../types';
-import { trackSocialShare } from '../utils/analytics';
+import "react-social-icons/bsky.app";
+import "react-social-icons/facebook";
+import "react-social-icons/linkedin";
+import "react-social-icons/twitter";
 
-const SHARE_TEXT = encodeURIComponent('Join me on the Groops waitlist - find and connect with like-minded people! 🤝');
-const SHARE_URL = encodeURIComponent('https://groops.app');
+import { SocialIcon } from "react-social-icons/component";
+import { SocialShare as SocialShareType } from "../types";
+import { trackSocialShare } from "../utils/analytics";
 
-const SOCIAL_SHARES: SocialShareType[] = [
+const SHARE_TEXT = encodeURIComponent(
+  "Join me on the Groops waitlist - find and connect with like-minded people! 🤝"
+);
+const SHARE_URL = encodeURIComponent("https://groops.app");
+
+const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
   {
-    platform: 'facebook',
+    platform: "facebook",
     url: `https://www.facebook.com/sharer/sharer.php?u=${SHARE_URL}`,
+    iconUrl: "www.facebook.com",
   },
   {
-    platform: 'linkedin',
+    platform: "linkedin",
     url: `https://www.linkedin.com/sharing/share-offsite/?url=${SHARE_URL}`,
+    iconUrl: "www.linkedin.com",
   },
   {
-    platform: 'twitter',
+    platform: "twitter",
     url: `https://twitter.com/intent/tweet?text=${SHARE_TEXT}&url=${SHARE_URL}`,
+    iconUrl: "www.twitter.com",
   },
   {
-    platform: 'bluesky',
+    platform: "bluesky",
     url: `https://bsky.app/intent/compose?text=${SHARE_TEXT}%20${SHARE_URL}`,
+    iconUrl: "www.bsky.app",
   },
 ];
-
-const IconMap = {
-  facebook: Facebook,
-  linkedin: Linkedin,
-  twitter: Twitter,
-  bluesky: Twitter, // Using Twitter icon as placeholder for BlueSky
-};
 
 export const SocialShare = () => {
   const handleShare = (share: SocialShareType) => {
     trackSocialShare(share);
-    window.open(share.url, '_blank');
+    window.open(share.url, "_blank");
   };
 
   return (
-    <div className="flex gap-4 items-center justify-center mt-6">
+    <div className="flex space-x-2 items-center justify-center mt-6">
       <span className="text-sm text-gray-600">Share with friends:</span>
       {SOCIAL_SHARES.map((share) => {
-        const Icon = IconMap[share.platform];
         return (
           <button
             key={share.platform}
             onClick={() => handleShare(share)}
-            className="p-2 text-gray-600 hover:text-rose-500 transition-colors"
+            className="text-gray-600 hover:text-rose-500 transition-colors"
             aria-label={`Share on ${share.platform}`}
           >
-            <Icon size={20} />
+            <SocialIcon url={share.iconUrl} style={{ width: 32, height: 32 }} />
           </button>
         );
       })}

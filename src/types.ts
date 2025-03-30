@@ -6,6 +6,7 @@ export interface WaitListFormData {
 }
 
 export interface SocialShare {
-  platform: 'facebook' | 'linkedin' | 'twitter' | 'bluesky';
+  platform: "facebook" | "linkedin" | "twitter" | "bluesky";
   url: string;
+  iconUrl: string;
 }
