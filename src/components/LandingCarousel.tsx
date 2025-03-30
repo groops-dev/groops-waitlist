@@ -32,7 +32,7 @@ export const LandingCarousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden h-48 rounded-2xl">
+    <div className="relative w-full overflow-hidden h-48 rounded-2xl bg-white">
       <div className="absolute w-full transition-transform duration-500 ease-in-out">
         {carouselData.map((item, index) => (
           <div
@@ -42,7 +42,7 @@ export const LandingCarousel = () => {
               transform: `translateX(${(index - currentIndex) * 100}%)`,
             }}
           >
-            <div className="rounded-2xl p-6 shadow-sm h-48">
+            <div className="rounded-2xl p-6 h-48">
               <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
               <p className="text-gray-600">{item.description}</p>
             </div>
