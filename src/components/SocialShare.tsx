@@ -1,6 +1,5 @@
 import "react-social-icons/bsky.app";
 import "react-social-icons/facebook";
-import "react-social-icons/linkedin";
 import "react-social-icons/twitter";
 
 import { SocialIcon } from "react-social-icons/component";
@@ -17,11 +16,6 @@ const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
     platform: "facebook",
     url: `https://www.facebook.com/sharer/sharer.php?u=${SHARE_URL}`,
     iconUrl: "www.facebook.com",
-  },
-  {
-    platform: "linkedin",
-    url: `https://www.linkedin.com/sharing/share-offsite/?url=${SHARE_URL}`,
-    iconUrl: "www.linkedin.com",
   },
   {
     platform: "twitter",
