@@ -32,7 +32,7 @@ export const LandingCarousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden h-64 sm:h-52 rounded-2xl bg-white">
+    <div className="relative w-full overflow-hidden h-64 sm:h-52 rounded-2xl bg-white text-center">
       <div className="absolute w-full transition-transform duration-500 ease-in-out">
         {carouselData.map((item, index) => (
           <div

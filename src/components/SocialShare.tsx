@@ -1,6 +1,8 @@
 import "react-social-icons/bsky.app";
 import "react-social-icons/facebook";
 import "react-social-icons/twitter";
+import "react-social-icons/instagram";
+import "react-social-icons/x";
 
 import { SocialIcon } from "react-social-icons/component";
 import { SocialShare as SocialShareType } from "../types";
@@ -29,7 +31,7 @@ const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
   },
 ];
 
-export const SocialShare = () => {
+export function SocialShare() {
   const handleShare = (share: SocialShareType) => {
     trackSocialShare(share);
     window.open(share.url, "_blank");
@@ -52,4 +54,56 @@ export const SocialShare = () => {
       })}
     </div>
   );
-};
+}
+
+const GROOPS_SOCIAL_LINKS = [
+  {
+    platform: "facebook",
+    url: "https://www.facebook.com/WeAreGroops",
+    iconUrl: "www.facebook.com",
+  },
+  {
+    platform: "instagram",
+    url: "https://www.instagram.com/wearegroops",
+    iconUrl: "www.instagram.com",
+  },
+  {
+    platform: "twitter",
+    url: "https://www.x.com/wearegroops",
+    iconUrl: "www.x.com",
+  },
+  {
+    platform: "bluesky",
+    url: "https://bsky.app/profile/did:plc:47evncoti6bedmqxal7x4zyo",
+    iconUrl: "www.bsky.app",
+  },
+];
+
+export function GroopsSocialLinks() {
+  const handleSharePress = (url: string) => {
+    window.open(url, "_blank");
+  };
+
+  return (
+    <div className="flex space-x-2 items-center justify-center">
+      <span className="text-sm text-gray-800">Follow us:</span>
+      {GROOPS_SOCIAL_LINKS.map(({ platform, url, iconUrl }) => {
+        return (
+          <button
+            key={platform}
+            onClick={() => handleSharePress(url)}
+            className="text-gray-600 hover:text-rose-500 transition-colors"
+            aria-label={`Follow us on ${platform}`}
+          >
+            <SocialIcon
+              url={iconUrl}
+              style={{ width: 32, height: 32 }}
+              bgColor="#e5e7eb"
+              fgColor="#ff2d6a"
+            />
+          </button>
+        );
+      })}
+    </div>
+  );
+}

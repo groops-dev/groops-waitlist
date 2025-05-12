@@ -3,7 +3,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { WaitListFormData } from "./types";
 import { setWaitListStatus, getWaitListStatus } from "./utils/localStorage";
 import { initAnalytics, trackSignup } from "./utils/analytics";
-import { SocialShare } from "./components/SocialShare";
+import { GroopsSocialLinks, SocialShare } from "./components/SocialShare";
 import { CookieBanner } from "./components/CookieBanner";
 import { LandingCarousel } from "./components/LandingCarousel";
 import { Logo } from "./components/Logo";
@@ -56,11 +56,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint-50 to-mint-100">
       <div className="max-w-xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="mb-8 flex flex-col gap-4">
           <div className="flex flex-col items-center mb-6">
             <Logo />
           </div>
           <LandingCarousel />
+          <div className="flex flex-col items-center bg-white rounded-2xl shadow-sm py-4">
+            <GroopsSocialLinks />
+          </div>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm p-8">
