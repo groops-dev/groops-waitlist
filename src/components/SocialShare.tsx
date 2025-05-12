@@ -22,7 +22,7 @@ const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
   {
     platform: "twitter",
     url: `https://twitter.com/intent/tweet?text=${SHARE_TEXT}&url=${SHARE_URL}`,
-    iconUrl: "www.twitter.com",
+    iconUrl: "www.x.com",
   },
   {
     platform: "bluesky",
