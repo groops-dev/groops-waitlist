@@ -3,7 +3,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { WaitListFormData } from "./types";
 import { setWaitListStatus, getWaitListStatus } from "./utils/localStorage";
 import { initAnalytics, trackSignup } from "./utils/analytics";
-import { SocialShare } from "./components/SocialShare";
+import { GroopsSocialLinks, SocialShare } from "./components/SocialShare";
 import { CookieBanner } from "./components/CookieBanner";
 import { LandingCarousel } from "./components/LandingCarousel";
 import { Logo } from "./components/Logo";
@@ -24,7 +24,7 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbwH6CyZyXYijIr809LtFl2BmyST6d8hq-zAOjygbMw6z8Os35rKr9EiNzLq6WF0Eo1Y/exec";
+      "https://script.google.com/macros/s/AKfycbyug1Aop10_qHNM9fwe8Rtt9ZkwAhBb2ZgV9YE2e3oKE-NuVuVeHNLpyHHM5FFuwfQj/exec";
 
     try {
       // Send the form data to the Google Apps Script endpoint
@@ -56,11 +56,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-mint-50 to-mint-100">
       <div className="max-w-xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="mb-8 flex flex-col gap-4">
           <div className="flex flex-col items-center mb-6">
             <Logo />
           </div>
           <LandingCarousel />
+          <div className="flex flex-col items-center bg-white rounded-2xl shadow-sm py-4">
+            <GroopsSocialLinks />
+          </div>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm p-8">
@@ -95,38 +98,6 @@ function App() {
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-              </div>
-
-              <div>
-                <label htmlFor="name" className="sr-only">
-                  Name (optional)
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Name (optional)"
-                  className="mt-1 block w-full rounded-2xl bg-mint-50 border-0 px-6 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-mint-200 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-mint-500"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
-              </div>
-
-              <div>
-                <label htmlFor="location" className="sr-only">
-                  Location (optional)
-                </label>
-                <input
-                  type="text"
-                  id="location"
-                  placeholder="Location (optional)"
-                  className="mt-1 block w-full rounded-2xl bg-mint-50 border-0 px-6 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-mint-200 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-mint-500"
-                  value={formData.location}
-                  onChange={(e) =>
-                    setFormData({ ...formData, location: e.target.value })
                   }
                 />
               </div>
