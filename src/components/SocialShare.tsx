@@ -49,7 +49,11 @@ export function SocialShare() {
             className="text-gray-600 hover:text-rose-500 transition-colors"
             aria-label={`Share on ${share.platform}`}
           >
-            <SocialIcon url={share.iconUrl} style={{ width: 32, height: 32 }} />
+            <SocialIcon
+              url={share.iconUrl}
+              style={{ width: 32, height: 32 }}
+              as="div"
+            />
           </button>
         );
       })}
@@ -86,6 +90,10 @@ const GROOPS_SOCIAL_LINKS = [
 ];
 
 export function GroopsSocialLinks() {
+  const handleSharePress = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="flex space-x-2 items-center justify-center">
       <span className="text-sm text-gray-800">Follow us:</span>
@@ -94,6 +102,7 @@ export function GroopsSocialLinks() {
           <button
             key={platform}
             className="text-gray-600 hover:text-rose-500 transition-colors"
+            onClick={() => handleSharePress(url)}
             aria-label={`Follow us on ${platform}`}
           >
             <SocialIcon
@@ -102,6 +111,7 @@ export function GroopsSocialLinks() {
               bgColor="#e5e7eb"
               fgColor="#ff2d6a"
               href={url}
+              as="div"
             />
           </button>
         );
