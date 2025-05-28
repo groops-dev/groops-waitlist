@@ -3,6 +3,7 @@ import "react-social-icons/facebook";
 import "react-social-icons/twitter";
 import "react-social-icons/instagram";
 import "react-social-icons/x";
+import "react-social-icons/tiktok";
 
 import { SocialIcon } from "react-social-icons/component";
 import { SocialShare as SocialShareType } from "../types";
@@ -68,6 +69,11 @@ const GROOPS_SOCIAL_LINKS = [
     iconUrl: "www.instagram.com",
   },
   {
+    platform: "tiktok",
+    url: "https://www.tiktok.com/@wearegroops",
+    iconUrl: "www.tiktok.com",
+  },
+  {
     platform: "twitter",
     url: "https://www.x.com/wearegroops",
     iconUrl: "www.x.com",
@@ -80,10 +86,6 @@ const GROOPS_SOCIAL_LINKS = [
 ];
 
 export function GroopsSocialLinks() {
-  const handleSharePress = (url: string) => {
-    window.open(url, "_blank");
-  };
-
   return (
     <div className="flex space-x-2 items-center justify-center">
       <span className="text-sm text-gray-800">Follow us:</span>
@@ -91,7 +93,6 @@ export function GroopsSocialLinks() {
         return (
           <button
             key={platform}
-            onClick={() => handleSharePress(url)}
             className="text-gray-600 hover:text-rose-500 transition-colors"
             aria-label={`Follow us on ${platform}`}
           >
@@ -100,6 +101,7 @@ export function GroopsSocialLinks() {
               style={{ width: 32, height: 32 }}
               bgColor="#e5e7eb"
               fgColor="#ff2d6a"
+              href={url}
             />
           </button>
         );
