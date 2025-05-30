@@ -7,9 +7,9 @@ const carouselData: ReadonlyArray<{ title: string; description: string }> = [
       "Social media promised connection but left us more isolated than ever. Groops is here to change that—by bringing people together in a real way.",
   },
   {
-    title: "Curated connections, not endless scrolling",
+    title: "Curated connections,\nnot endless scrolling",
     description:
-      "Tell us what you love, take a quick quiz, and we’ll match you with a small group of like-minded people. Real conversations, real friendships.",
+      "Tell us what you love, take a quick quiz, and we'll match you with a small group of like-minded people. Real conversations, real friendships.",
   },
   {
     title: "Be part of something real",
@@ -43,7 +43,7 @@ export const LandingCarousel = () => {
             }}
           >
             <div className="rounded-2xl p-6 h-64 sm:h-52 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
+              <h2 className="text-2xl font-bold mb-2 whitespace-pre-line">{item.title}</h2>
               <p className="text-gray-600">{item.description}</p>
             </div>
           </div>
