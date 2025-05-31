@@ -4,6 +4,7 @@ import "react-social-icons/twitter";
 import "react-social-icons/instagram";
 import "react-social-icons/x";
 import "react-social-icons/tiktok";
+import "react-social-icons/whatsapp";
 
 import { SocialIcon } from "react-social-icons/component";
 import { SocialShare as SocialShareType } from "../types";
@@ -29,6 +30,11 @@ const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
     platform: "bluesky",
     url: `https://bsky.app/intent/compose?text=${SHARE_TEXT}%20${SHARE_URL}`,
     iconUrl: "www.bsky.app",
+  },
+  {
+    platform: "whatsapp",
+    url: `https://wa.me/?text=${SHARE_TEXT}%20${SHARE_URL}`,
+    iconUrl: "www.whatsapp.com",
   },
 ];
 
