@@ -8,7 +8,7 @@ import "react-social-icons/whatsapp";
 
 import { SocialIcon } from "react-social-icons/component";
 import { SocialShare as SocialShareType } from "../types";
-import { trackSocialShare } from "../utils/analytics";
+import { trackSocialShare, trackSocialView } from "../utils/analytics";
 
 const SHARE_TEXT = encodeURIComponent(
   "Join me on the Groops waitlist - find and connect with like-minded people! 🤝"
@@ -96,7 +96,8 @@ const GROOPS_SOCIAL_LINKS = [
 ];
 
 export function GroopsSocialLinks() {
-  const handleSharePress = (url: string) => {
+  const handleSharePress = (url: string, platform: string) => {
+    trackSocialView(platform);
     window.open(url, "_blank");
   };
 
@@ -108,7 +109,7 @@ export function GroopsSocialLinks() {
           <button
             key={platform}
             className="text-gray-600 hover:text-rose-500 transition-colors"
-            onClick={() => handleSharePress(url)}
+            onClick={() => handleSharePress(url, platform)}
             aria-label={`Follow us on ${platform}`}
           >
             <SocialIcon
