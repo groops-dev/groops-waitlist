@@ -13,7 +13,7 @@ import { trackSocialShare, trackSocialView } from "../utils/analytics";
 const SHARE_TEXT = encodeURIComponent(
   "Join me on the Groops waitlist - find and connect with like-minded people! 🤝"
 );
-const SHARE_URL = encodeURIComponent("https://groops.app");
+const SHARE_URL = encodeURIComponent("https://groops.club");
 
 const SOCIAL_SHARES: ReadonlyArray<SocialShareType> = [
   {
