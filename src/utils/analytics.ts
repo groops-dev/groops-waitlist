@@ -31,3 +31,11 @@ export const trackSocialShare = (share: SocialShare) => {
     platform: share.platform,
   });
 };
+
+export function optInAnalytics() {
+  posthog.opt_in_capturing();
+}
+
+export function optOutAnalytics() {
+  posthog.opt_out_capturing();
+}
