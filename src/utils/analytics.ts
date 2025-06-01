@@ -20,6 +20,12 @@ export const trackSignup = (email: string, hasOptionalFields: boolean) => {
   });
 };
 
+export const trackSocialView = (platform: string) => {
+  posthog.capture("social_view", {
+    platform,
+  });
+};
+
 export const trackSocialShare = (share: SocialShare) => {
   posthog.capture("social_share_click", {
     platform: share.platform,
