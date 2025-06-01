@@ -1,6 +1,7 @@
 import * as React from "react";
 import { X } from "lucide-react";
 
+import { optInAnalytics, optOutAnalytics } from "../utils/analytics";
 export const CookieBanner = () => {
   const [isVisible, setIsVisible] = React.useState(
     !localStorage.getItem("cookie_consent")
@@ -8,6 +9,13 @@ export const CookieBanner = () => {
 
   const acceptCookies = () => {
     localStorage.setItem("cookie_consent", "true");
+    optInAnalytics();
+    setIsVisible(false);
+  };
+
+  const handleCookieDecline = () => {
+    localStorage.setItem("cookie_consent", "false");
+    optOutAnalytics();
     setIsVisible(false);
   };
 
@@ -28,7 +36,7 @@ export const CookieBanner = () => {
             Accept
           </button>
           <button
-            onClick={() => setIsVisible(false)}
+            onClick={handleCookieDecline}
             className="p-2 text-gray-500 hover:text-gray-700"
           >
             <X size={20} />
